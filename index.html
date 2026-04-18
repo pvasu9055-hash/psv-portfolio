@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Penkey Sri Vasu — Software Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#030305;--bg1:#08080f;--bg2:#0e0e1a;--border:rgba(255,255,255,0.06);--border-hi:rgba(255,255,255,0.12);--text:#f0f0f5;--dim:#606075;--mid:#9898b0;--lime:#b8ff3c;--lime-dim:rgba(184,255,60,0.12)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(3,3,5,0.92);backdrop-filter:blur(20px)}
+.nav-logo{font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:4px;color:var(--text)}
+.nav-logo span{color:var(--lime)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.hire-btn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#000;background:var(--lime);padding:7px 16px;border-radius:2px;text-decoration:none;font-weight:600}
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 380px;align-items:center;gap:60px;padding:80px 48px;max-width:1200px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:28px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.badge-txt{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--dim);text-transform:uppercase}
+.hero-name{font-family:'Bebas Neue',cursive;font-size:clamp(64px,8vw,120px);line-height:.92;letter-spacing:2px;margin-bottom:16px}
+.hero-name .ghost{-webkit-text-stroke:1px rgba(255,255,255,0.18);color:transparent;transition:color .4s,-webkit-text-stroke-color .4s;display:block}
+.hero-name .ghost:hover{color:var(--lime);-webkit-text-stroke-color:transparent}
+.role{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--lime);margin-bottom:20px}
+.desc{font-size:15px;line-height:1.8;color:var(--mid);max-width:460px;margin-bottom:36px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-p{padding:12px 26px;background:var(--lime);color:#000;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;font-weight:600;border:none;border-radius:3px;text-decoration:none;cursor:pointer;transition:opacity .2s}
+.btn-p:hover{opacity:.85}
+.btn-s{padding:12px 26px;background:transparent;color:var(--mid);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;border:1px solid var(--border-hi);border-radius:3px;text-decoration:none;cursor:pointer;transition:color .2s,border-color .2s}
+.btn-s:hover{color:var(--text);border-color:rgba(255,255,255,.25)}
+.avatar-col{display:flex;flex-direction:column;align-items:center;gap:24px}
+.av-wrap{position:relative;width:180px;height:180px}
+.av-ring{position:absolute;border-radius:50%;border:1px solid rgba(184,255,60,.15);animation:expand 3s ease-out infinite}
+.av-ring:nth-child(1){inset:-20px;animation-delay:0s}
+.av-ring:nth-child(2){inset:-42px;animation-delay:1s}
+.av-ring:nth-child(3){inset:-64px;animation-delay:2s}
+@keyframes expand{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.05);opacity:0}}
+.av-circle{position:absolute;inset:0;border-radius:50%;background:linear-gradient(145deg,#12121e,#1a1a2e);border:1px solid var(--border-hi);display:flex;align-items:center;justify-content:center;z-index:2;animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{0%,100%{box-shadow:0 0 0 1px rgba(184,255,60,.1),0 20px 60px rgba(0,0,0,.6)}50%{box-shadow:0 0 0 1px rgba(184,255,60,.3),0 20px 60px rgba(0,0,0,.6),0 0 50px rgba(184,255,60,.1)}}
+.av-init{font-family:'Bebas Neue',cursive;font-size:52px;letter-spacing:3px;color:var(--lime)}
+.stat-card{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
+.stat-row:last-child{border-bottom:none}
+.sl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
+.sv{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text)}
+.sv.hi{color:var(--lime)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 48px}
+section{padding:90px 0}
+.sec-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--lime);text-transform:uppercase;margin-bottom:8px;display:block}
+.sec-h{font-family:'Bebas Neue',cursive;font-size:clamp(40px,5vw,64px);letter-spacing:2px;color:var(--text);margin-bottom:48px}
+#skills{background:var(--bg1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+.sk{padding:16px 0;border-bottom:1px solid var(--border)}
+.sk-top{display:flex;justify-content:space-between;margin-bottom:8px}
+.sk-name{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mid);letter-spacing:1px}
+.sk-pct{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--lime)}
+.sk-bar{height:2px;background:rgba(255,255,255,.05)}
+.sk-fill{height:100%;width:0;background:linear-gradient(90deg,rgba(184,255,60,.4),var(--lime));transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+.mq{overflow:hidden;padding:16px 0;background:var(--lime-dim);border-top:1px solid rgba(184,255,60,.1);border-bottom:1px solid rgba(184,255,60,.1)}
+.mq-track{display:flex;width:max-content;animation:scroll 22s linear infinite}
+.mq-item{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;white-space:nowrap;color:rgba(184,255,60,.7);padding:0 36px;border-right:1px solid rgba(184,255,60,.15)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.proj-card{background:var(--bg);padding:36px 30px;position:relative;overflow:hidden;transition:background .3s}
+.proj-card:hover{background:var(--bg1)}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:0;background:linear-gradient(90deg,var(--lime),transparent);transition:height .4s}
+.proj-card:hover::before{height:2px}
+.pi{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--dim);margin-bottom:16px}
+.pn{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:1px;color:var(--text);margin-bottom:12px;transition:color .3s}
+.proj-card:hover .pn{color:var(--lime)}
+.pd{font-size:12px;line-height:1.7;color:var(--dim);margin-bottom:20px}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1.5px;color:var(--dim);text-transform:uppercase;border:1px solid var(--border);padding:3px 7px;border-radius:2px}
+.plnk{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.plnk:hover{color:var(--lime)}
+.exp-list{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:40px;padding:36px 0;border-bottom:1px solid var(--border)}
+.exp-item:first-child{border-top:1px solid var(--border)}
+.ep{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--lime);margin-bottom:8px}
+.ec{font-size:12px;color:var(--dim);line-height:1.5}
+.er{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:1px;color:var(--text);margin-bottom:14px}
+.eb{list-style:none}
+.eb li{font-size:13px;line-height:1.7;color:var(--dim);padding:4px 0 4px 16px;position:relative}
+.eb li::before{content:'—';position:absolute;left:0;color:var(--lime);font-size:9px;top:7px}
+#ai{background:var(--bg1);border-top:1px solid var(--border)}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.ai-tag{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--lime);background:var(--lime-dim);padding:5px 12px;border-radius:3px;border:1px solid rgba(184,255,60,.2);margin-bottom:20px}
+.ai-h{font-family:'Bebas Neue',cursive;font-size:clamp(36px,4vw,56px);letter-spacing:2px;color:var(--text);line-height:1;margin-bottom:16px}
+.ai-p{font-size:13px;line-height:1.7;color:var(--dim);margin-bottom:24px;max-width:340px}
+.hints{display:flex;flex-direction:column;gap:7px;margin-top:24px}
+.hbtn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--mid);background:var(--bg2);border:1px solid var(--border);padding:9px 14px;border-radius:4px;text-align:left;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.hbtn:hover{border-color:rgba(184,255,60,.3);color:var(--lime);background:var(--lime-dim)}
+.chat-box{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;height:480px}
+.chat-top{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
+.chat-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);display:flex;align-items:center;gap:7px}
+.chat-msgs{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.chat-msgs::-webkit-scrollbar{width:3px}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.msg{max-width:86%}
+.msg.u{align-self:flex-end}
+.msg.b{align-self:flex-start}
+.mb{padding:9px 13px;border-radius:8px;font-size:12px;line-height:1.6}
+.msg.u .mb{background:var(--lime-dim);border:1px solid rgba(184,255,60,.2);color:var(--text)}
+.msg.b .mb{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--mid)}
+.mt{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--dim);letter-spacing:1px;margin-top:3px;padding:0 2px}
+.msg.u .mt{text-align:right}
+.typing{display:none;align-items:center;gap:4px;padding:9px 18px}
+.typing.show{display:flex}
+.td{width:4px;height:4px;border-radius:50%;background:var(--lime);opacity:.4;animation:td 1.2s ease infinite}
+.td:nth-child(2){animation-delay:.2s}
+.td:nth-child(3){animation-delay:.4s}
+@keyframes td{0%,80%,100%{opacity:.2;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+.chat-input{display:flex;border-top:1px solid var(--border)}
+#inp{flex:1;background:transparent;border:none;outline:none;padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text);letter-spacing:.5px}
+#inp::placeholder{color:var(--dim)}
+#snd{padding:14px 18px;background:var(--lime-dim);border:none;border-left:1px solid var(--border);color:var(--lime);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;transition:background .2s}
+#snd:hover{background:rgba(184,255,60,.22)}
+#snd:disabled{opacity:.4;cursor:not-allowed}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.cert{background:var(--bg);padding:32px 28px;transition:background .3s}
+.cert:hover{background:var(--bg1)}
+.corg{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--lime);text-transform:uppercase;margin-bottom:10px}
+.cname{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:1px;color:var(--text);margin-bottom:5px}
+.cid{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim);letter-spacing:1px}
+#contact{text-align:center;padding:120px 0;position:relative}
+.contact-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(184,255,60,.04) 0%,transparent 70%);pointer-events:none}
+.ripple-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;margin-bottom:44px}
+.cr{position:absolute;border-radius:50%;border:1px solid rgba(184,255,60,.2);animation:crip 3s ease-out infinite}
+.cr:nth-child(1){width:90px;height:90px;animation-delay:0s}
+.cr:nth-child(2){width:140px;height:140px;animation-delay:1s}
+.cr:nth-child(3){width:190px;height:190px;animation-delay:2s}
+@keyframes crip{0%{transform:scale(.8);opacity:.8}100%{transform:scale(1.2);opacity:0}}
+.ccore{width:58px;height:58px;border-radius:50%;background:var(--lime-dim);border:1px solid rgba(184,255,60,.3);display:flex;align-items:center;justify-content:center;font-size:22px;z-index:2;position:relative}
+.ct{font-family:'Bebas Neue',cursive;font-size:clamp(44px,6vw,80px);letter-spacing:3px;color:var(--text);line-height:1;margin-bottom:16px}
+.csub{font-size:14px;color:var(--dim);line-height:1.7;max-width:440px;margin:0 auto 40px}
+.clinks{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.clink{display:flex;align-items:center;gap:8px;padding:11px 20px;background:var(--bg1);border:1px solid var(--border);border-radius:4px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--mid);text-transform:uppercase;transition:color .2s,border-color .2s,background .2s}
+.clink:hover{color:var(--lime);border-color:rgba(184,255,60,.25);background:var(--lime-dim)}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify-content:space-between;align-items:center}
+.ft{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:2px}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media(max-width:860px){nav{padding:14px 20px}.nav-links{display:none}#hero{grid-template-columns:1fr;padding:80px 20px 60px;gap:48px}.avatar-col{order:-1}.wrap{padding:0 20px}.sk-grid,.proj-grid,.exp-item,.ai-grid,.cert-grid{grid-template-columns:1fr}footer{flex-direction:column;gap:8px;padding:20px;text-align:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">P<span>.</span>S<span>.</span>VASU</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#ai">AI Demo</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:2303031050462@paruluniversity.ac.in" class="hire-btn">HIRE ME</a>
+</nav>
+
+<div id="hero">
+  <div>
+    <div class="badge"><div class="dot"></div><span class="badge-txt">Open to Opportunities · Vadodara, India</span></div>
+    <h1 class="hero-name"><span>PENKEY</span><br><span>SRI</span><br><span class="ghost">VASU</span></h1>
+    <p class="role">Software Developer · Cloud Engineer · AI Integrations</p>
+    <p class="desc">Building real-world systems that ship — civilian safety platforms, AI agents, full-stack apps on GCP and cloud infrastructure. B.Tech CSE at Parul University, graduating 2027.</p>
+    <div class="btns">
+      <a href="#projects" class="btn-p">View Work</a>
+      <a href="#ai" class="btn-s">Ask My AI ↓</a>
+    </div>
+  </div>
+  <div class="avatar-col">
+    <div class="av-wrap">
+      <div class="av-ring"></div><div class="av-ring"></div><div class="av-ring"></div>
+      <div class="av-circle"><div class="av-init">PSV</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-row"><span class="sl">Status</span><span class="sv hi">Available</span></div>
+      <div class="stat-row"><span class="sl">Projects</span><span class="sv">3 in Production</span></div>
+      <div class="stat-row"><span class="sl">Stack</span><span class="sv">Java · Spring · React</span></div>
+      <div class="stat-row"><span class="sl">Cloud</span><span class="sv">GCP · Docker · Render</span></div>
+      <div class="stat-row"><span class="sl">LeetCode</span><span class="sv">50+ Problems</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="sec-tag rv">01 — Skills</span>
+    <h2 class="sec-h rv">Technical Stack</h2>
+    <div class="sk-grid">
+      <div>
+        <div class="sk rv"><div class="sk-top"><span class="sk-name">Java / Spring Boot</span><span class="sk-pct">88%</span></div><div class="sk-bar"><div class="sk-fill" data-w="88"></div></div></div>
+        <div class="sk rv"><div class="sk-top"><span class="sk-name">REST API Design</span><span class="sk-pct">85%</span></div><div class="sk-bar"><div class="sk-fill" data-w="85"></div></div></div>
+        <div class="sk rv"><div class="sk-top"><span class="sk-name">Docker / Cloud Deploy</span><span class="sk-pct">80%</span></div><div class="sk-bar"><div class="sk-fill" data-w="80"></div></div></div>
+        <div class="sk rv"><div class="sk-top"><span class="sk-name">AI / Claude API / Groq</span><span class="sk-pct">78%</span></div><div class="sk-bar"><div class="sk-fill" data-w="78"></div></div></div>
+      </div>
+      <div>
+        <div class="sk rv"><div class="sk-top"><span class="sk-name">JavaScript / HTML / CSS</span><span class="sk-pct">82%</span></div><div class="sk-bar"><div class="sk-fill" data-w="82"></div></div></div>
+        <div class="sk rv"><div class="sk-top"><span class="sk-name">React</span><span class="sk-pct">75%</span></div><div class="sk-bar"><div class="sk-fill" data-w="75"></div></div></div>
+        <div class="sk rv"><div class="sk-top"><span class="sk-name">SQL / PostgreSQL</span><span class="sk-pct">72%</span></div><div class="sk-bar"><div class="sk-fill" data-w="72"></div></div></div>
+        <div class="sk rv"><div class="sk-top"><span class="sk-name">Python</span><span class="sk-pct">70%</span></div><div class="sk-bar"><div class="sk-fill" data-w="70"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mq">
+  <div class="mq-track">
+    <span class="mq-item">HackerRank Certified</span><span class="mq-item">Deloitte Data Analytics</span><span class="mq-item">Google Cloud Platform</span><span class="mq-item">Vercel</span><span class="mq-item">Render.com</span><span class="mq-item">Parul University</span><span class="mq-item">Claude AI API</span><span class="mq-item">Spring Boot</span><span class="mq-item">WebSocket</span><span class="mq-item">Brevo SMTP</span>
+    <span class="mq-item">HackerRank Certified</span><span class="mq-item">Deloitte Data Analytics</span><span class="mq-item">Google Cloud Platform</span><span class="mq-item">Vercel</span><span class="mq-item">Render.com</span><span class="mq-item">Parul University</span><span class="mq-item">Claude AI API</span><span class="mq-item">Spring Boot</span><span class="mq-item">WebSocket</span><span class="mq-item">Brevo SMTP</span>
+  </div>
+</div>
+
+<section id="projects">
+  <div class="wrap">
+    <span class="sec-tag rv">02 — Projects</span>
+    <h2 class="sec-h rv">Selected Work</h2>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card rv"><div class="pi">001 · Mar 2026</div><div class="pn">CivilianShield</div><div class="pd">Real-time civilian emergency alert system with email notifications via Brevo SMTP. Containerized with Docker, deployed on Render.com.</div><div class="chips"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">Docker</span><span class="chip">Brevo SMTP</span></div><a href="https://github.com/pvasu9055-hash/CivilianShield" target="_blank" class="plnk">GitHub ↗</a></div>
+    <div class="proj-card rv"><div class="pi">002 · Mar 2026</div><div class="pn">Skillgap Analyzer</div><div class="pd">Full-stack career assessment tool identifying skill gaps between user profiles and job market demands. Java + React.</div><div class="chips"><span class="chip">Java</span><span class="chip">React</span><span class="chip">PostgreSQL</span><span class="chip">Vercel</span></div><a href="https://skillgap-frontend-eight.vercel.app" target="_blank" class="plnk">Live Demo ↗</a></div>
+    <div class="proj-card rv"><div class="pi">003 · Mar 2026</div><div class="pn">CS AI Agent</div><div class="pd">AI-powered Computer Science assistant delivering context-aware intelligent responses to students via Groq API.</div><div class="chips"><span class="chip">JavaScript</span><span class="chip">HTML/CSS</span><span class="chip">Groq API</span><span class="chip">Vercel</span></div><a href="https://cs-agent-rust.vercel.app" target="_blank" class="plnk">Live Demo ↗</a></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <span class="sec-tag rv">03 — Experience</span>
+    <h2 class="sec-h rv">Work</h2>
+    <div class="exp-list">
+      <div class="exp-item rv">
+        <div><div class="ep">Jan 2026 — Present</div><div class="ec">Freelance · Remote<br>Vadodara, Gujarat</div></div>
+        <div><div class="er">Software Developer</div><ul class="eb">
+          <li>Engineered and shipped 3 full-stack web applications including a real-time civilian emergency alert system.</li>
+          <li>Containerized applications with Docker for cloud deployment on Render.com.</li>
+          <li>Integrated Brevo SMTP into Java backends for automated emergency email alerts.</li>
+          <li>Completed Deloitte Data Analytics Job Simulation via Forage.</li>
+          <li>Solved 50+ algorithmic problems on LeetCode.</li>
+        </ul></div>
+      </div>
+      <div class="exp-item rv">
+        <div><div class="ep">2025 — Present</div><div class="ec">Open Source · GitHub<br>github.com/pvasu9055-hash</div></div>
+        <div><div class="er">Open Source Developer</div><ul class="eb">
+          <li>Maintained 5+ public repositories with clean architecture and detailed documentation.</li>
+          <li>Published an AI-powered CS assistant with intelligent context-aware responses.</li>
+          <li>Built a full-stack skill-gap analyzer enabling users to compare skills against job market demands.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ai">
+  <div class="wrap">
+    <div class="ai-grid">
+      <div>
+        <div class="ai-tag"><div class="dot"></div>Live AI Feature</div>
+        <h2 class="ai-h">Ask My<br>AI Assistant</h2>
+        <p class="ai-p">Powered by Claude API. Ask anything about my skills, projects, experience, or tech stack.</p>
+        <div class="hints">
+          <button class="hbtn" onclick="hint(this)">→ What projects has Vasu built?</button>
+          <button class="hbtn" onclick="hint(this)">→ What is Vasu's tech stack?</button>
+          <button class="hbtn" onclick="hint(this)">→ Why should I hire Vasu?</button>
+          <button class="hbtn" onclick="hint(this)">→ Tell me about CivilianShield</button>
+        </div>
+      </div>
+      <div class="chat-box">
+        <div class="chat-top">
+          <div class="chat-title"><div class="dot"></div>Vasu's AI Portfolio Assistant</div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim);letter-spacing:2px">CLAUDE API</span>
+        </div>
+        <div class="chat-msgs" id="msgs">
+          <div class="msg b"><div class="mb">Hi! I'm Vasu's AI assistant. Ask me anything about his skills, projects, and experience. 👋</div><div class="mt">Just now</div></div>
+        </div>
+        <div class="typing" id="typing"><div class="td"></div><div class="td"></div><div class="td"></div></div>
+        <div class="chat-input">
+          <input type="text" id="inp" placeholder="Ask about Vasu...">
+          <button id="snd" onclick="send()">SEND</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap">
+    <span class="sec-tag rv">04 — Certifications</span>
+    <h2 class="sec-h rv">Credentials</h2>
+  </div>
+  <div class="cert-grid">
+    <div class="cert rv"><div class="corg">HackerRank</div><div class="cname">Java Basic</div><div class="cid">ID: 38E096934D73</div></div>
+    <div class="cert rv"><div class="corg">HackerRank</div><div class="cname">SQL Basic</div><div class="cid">ID: CC6ED25F9B03</div></div>
+    <div class="cert rv"><div class="corg">Deloitte via Forage</div><div class="cname">Data Analytics Simulation</div><div class="cid">Data Analysis · Forensic Technology</div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-glow"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="ripple-wrap rv"><div class="cr"></div><div class="cr"></div><div class="cr"></div><div class="ccore">✉</div></div>
+    <h2 class="ct rv">Let's Build<br>Together</h2>
+    <p class="csub rv">Open to software engineering roles, internships, and freelance projects. Remote or Vadodara.</p>
+    <div class="clinks rv">
+      <a href="mailto:2303031050462@paruluniversity.ac.in" class="clink">✉ Email</a>
+      <a href="https://linkedin.com/" class="clink" target="_blank">in LinkedIn</a>
+      <a href="https://github.com/pvasu9055-hash" class="clink" target="_blank">⌥ GitHub</a>
+      <a href="https://penkeysrivasu-portfolio.vercel.app/" class="clink" target="_blank">⊹ Portfolio</a>
+      <a href="tel:+919014735556" class="clink">☎ +91 9014 735 556</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">© 2026 PENKEY SRI VASU</div>
+  <div class="ft">VADODARA · INDIA</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+const skObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.style.width=e.target.dataset.w+'%'; skObs.unobserve(e.target); } });
+},{threshold:0.3});
+document.querySelectorAll('.sk-fill').forEach(f=>skObs.observe(f));
+
+const msgsEl = document.getElementById('msgs');
+const inpEl  = document.getElementById('inp');
+const typEl  = document.getElementById('typing');
+const sndEl  = document.getElementById('snd');
+const history = [];
+
+function ts(){ return new Date().toLocaleTimeString('en',{hour:'2-digit',minute:'2-digit'}); }
+
+function addMsg(text, role){
+  const d = document.createElement('div');
+  d.className = 'msg ' + role;
+  d.innerHTML = `<div class="mb">${text.replace(/\n/g,'<br>')}</div><div class="mt">${ts()}</div>`;
+  msgsEl.appendChild(d);
+  msgsEl.scrollTop = msgsEl.scrollHeight;
+}
+
+async function send(){
+  const txt = inpEl.value.trim();
+  if(!txt || sndEl.disabled) return;
+  inpEl.value = '';
+  addMsg(txt, 'u');
+  history.push({role:'user', content: txt});
+  sndEl.disabled = true;
+  typEl.classList.add('show');
+  msgsEl.scrollTop = msgsEl.scrollHeight;
+
+  try {
+    // Calls YOUR Vercel serverless function — no API key exposed in browser
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: history })
+    });
+    const data = await res.json();
+    typEl.classList.remove('show');
+    const reply = data?.reply || 'Something went wrong.';
+    history.push({role:'assistant', content: reply});
+    addMsg(reply, 'b');
+  } catch(e){
+    typEl.classList.remove('show');
+    addMsg('Connection error. Please try again.', 'b');
+  } finally {
+    sndEl.disabled = false;
+    inpEl.focus();
+  }
+}
+
+inpEl.addEventListener('keydown', e=>{ if(e.key==='Enter') send(); });
+function hint(btn){ inpEl.value = btn.textContent.replace('→ ','').trim(); send(); }
+</script>
+</body>
+</html>
