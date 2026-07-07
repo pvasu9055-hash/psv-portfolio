@@ -30,9 +30,9 @@ SKILLS:
 - Languages Spoken: English, Hindi, Telugu
 
 PROJECTS:
-1. DocSign — AI-powered digital document signature platform. Upload/sign/share/manage PDFs securely. Stack: React.js, TypeScript, Node.js, Express.js, PostgreSQL (Supabase), Prisma, JWT auth, AI document summarization, audit logging, Nodemailer. Deployed: Vercel (frontend) + AWS Elastic Beanstalk (backend) + Cloudflare.
+1. DocSign — AI-powered digital document signature platform. Upload/sign/share/manage PDFs securely. Stack: React.js, TypeScript, Node.js, Express.js, PostgreSQL (Supabase), Prisma, JWT auth, AI document summarization, audit logging, Nodemailer. Deployed: Vercel (frontend) + AWS Elastic Beanstalk (backend) + Cloudflare. Live: docsign.vasutech.online
 2. CivilianShield — Full-stack civilian safety platform, production-ready, 5+ REST endpoints, real users. SOS alerts, incident mapping, emergency contacts, AI threat detection. Stack: Spring Boot, REST API, H2, WebSocket, React. GitHub: github.com/pvasu9055-hash/CivilianShield
-3. Skill Gap Analyzer — AI career intelligence tool. Analyzes resumes vs job descriptions, generates skill-gap reports in under 3s using Groq LLM. Stack: React, Node.js, Vercel. Live: skillgap-frontend-eight.vercel.app
+3. Skill Gap Analyzer — AI career intelligence tool. Analyzes resumes vs job descriptions, generates skill-gap reports in under 3s using Groq LLM. Stack: React, Node.js, Vercel. Live: analyzer.vasutech.online
 
 EXPERIENCE:
 - Full Stack Developer (Freelance), Jan 2026–Present: Built/maintained 4+ full-stack apps (Spring Boot, React, PostgreSQL, Docker) across AWS, Render, Vercel. Cut deployment time 50% via CI/CD. Built AI chat app using Groq API + WebSocket, Dockerized.
