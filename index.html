@@ -445,9 +445,9 @@ footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify
     <h2 class="sec-h rv">Selected Work</h2>
   </div>
   <div class="proj-grid">
-    <div class="proj-card rv"><div class="pi">001 · 2026</div><div class="pn">DocSign</div><div class="pd">AI-powered digital document signature platform — upload, sign, share, and manage PDFs securely. JWT auth, AI document summarization, public signing links, audit logging, automated email via Nodemailer. Multi-cloud: Vercel frontend, AWS Elastic Beanstalk backend, Cloudflare.</div><div class="chips"><span class="chip">React.js</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Prisma</span><span class="chip">Supabase</span><span class="chip">AWS EB</span></div><a href="#" target="_blank" class="plnk">Live Demo ↗</a></div>
+    <div class="proj-card rv"><div class="pi">001 · 2026</div><div class="pn">DocSign</div><div class="pd">AI-powered digital document signature platform — upload, sign, share, and manage PDFs securely. JWT auth, AI document summarization, public signing links, audit logging, automated email via Nodemailer. Multi-cloud: Vercel frontend, AWS Elastic Beanstalk backend, Cloudflare.</div><div class="chips"><span class="chip">React.js</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Prisma</span><span class="chip">Supabase</span><span class="chip">AWS EB</span></div><a href="https://docsign.vasutech.online/" target="_blank" data-name="DocSign" class="plnk">Live Demo ↗</a></div>
     <div class="proj-card rv"><div class="pi">002 · Mar 2026</div><div class="pn">CivilianShield</div><div class="pd">Full-stack civilian safety platform, production-ready with 5+ REST API endpoints serving real users. SOS alert system, incident mapping, emergency contact module — iterated across 3 major versions, with an AI-based threat detection pipeline.</div><div class="chips"><span class="chip">Spring Boot</span><span class="chip">REST API</span><span class="chip">H2</span><span class="chip">WebSocket</span><span class="chip">React</span></div><a href="https://github.com/pvasu9055-hash/CivilianShield" target="_blank" class="plnk">GitHub ↗</a></div>
-    <div class="proj-card rv"><div class="pi">003 · Mar 2026</div><div class="pn">Skill Gap Analyzer</div><div class="pd">AI-powered career intelligence platform analyzing resumes against job descriptions, generating prioritized skill-gap reports in under 3 seconds using Groq LLM for rapid inference.</div><div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">Groq API</span><span class="chip">Vercel</span></div><a href="https://skillgap-frontend-eight.vercel.app" target="_blank" class="plnk">Live Demo ↗</a></div>
+    <div class="proj-card rv"><div class="pi">003 · Mar 2026</div><div class="pn">Skill Gap Analyzer</div><div class="pd">AI-powered career intelligence platform analyzing resumes against job descriptions, generating prioritized skill-gap reports in under 3 seconds using Groq LLM for rapid inference.</div><div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">Groq API</span><span class="chip">Vercel</span></div><a href="https://analyzer.vasutech.online/" target="_blank" data-name="Skill Gap Analyzer" class="plnk">Live Demo ↗</a></div>
   </div>
 </section>
 
@@ -686,9 +686,9 @@ function copyEmail(){
 
 // ---- Project modal ----
 const projectData = {
-  docsign: {name:'DocSign', tag:'AI-Powered Digital Document Signature Platform', desc:'A cloud-based platform enabling users to upload, digitally sign, share, and manage PDF documents securely — replacing inefficient paper-based workflows. Full stack built with JWT authentication, AI-powered document summarization, public signing links, audit logging, and automated email notifications via Nodemailer. Deployed as a scalable multi-cloud app: frontend on Vercel, backend on AWS Elastic Beanstalk, with Cloudflare integration for secure, production-ready delivery.', stack:['React.js','TypeScript','Node.js','Express.js','PostgreSQL','Supabase','Prisma','AWS Elastic Beanstalk','Vercel','Cloudflare'], link:'#'},
+  docsign: {name:'DocSign', tag:'AI-Powered Digital Document Signature Platform', desc:'A cloud-based platform enabling users to upload, digitally sign, share, and manage PDF documents securely — replacing inefficient paper-based workflows. Full stack built with JWT authentication, AI-powered document summarization, public signing links, audit logging, and automated email notifications via Nodemailer. Deployed as a scalable multi-cloud app: frontend on Vercel, backend on AWS Elastic Beanstalk, with Cloudflare integration for secure, production-ready delivery.', stack:['React.js','TypeScript','Node.js','Express.js','PostgreSQL','Supabase','Prisma','AWS Elastic Beanstalk','Vercel','Cloudflare'], link:'https://docsign.vasutech.online/'},
   civilianshield: {name:'CivilianShield', tag:'AI-Powered Civilian Safety Platform', desc:'A production-ready, full-stack civilian safety platform with 5+ REST API endpoints serving real users. Includes an SOS alert system, incident mapping, and emergency contact module — iterated across 3 major versions to reach the final stable release. Integrates an AI-based threat detection pipeline to automate emergency alert handling and improve response efficiency.', stack:['Spring Boot','REST API','H2','WebSocket','React'], link:'https://github.com/pvasu9055-hash/CivilianShield'},
-  skillgap: {name:'Skill Gap Analyzer', tag:'AI Career Intelligence Tool', desc:'An AI-powered career intelligence platform that analyzes resumes against job descriptions and generates prioritized skill-gap reports in under 3 seconds. Leverages Groq LLM for rapid inference, streamlining resume and job description analysis using AI-powered insights.', stack:['React','Node.js','Groq API','Vercel'], link:'https://skillgap-frontend-eight.vercel.app'}
+  skillgap: {name:'Skill Gap Analyzer', tag:'AI Career Intelligence Tool', desc:'An AI-powered career intelligence platform that analyzes resumes against job descriptions and generates prioritized skill-gap reports in under 3 seconds. Leverages Groq LLM for rapid inference, streamlining resume and job description analysis using AI-powered insights.', stack:['React','Node.js','Groq API','Vercel'], link:'https://analyzer.vasutech.online/'}
 };
 function openModal(key){
   const p = projectData[key];
@@ -701,7 +701,7 @@ function openModal(key){
     <p style="color:var(--text);opacity:.85;line-height:1.75;font-size:14.5px;margin-bottom:24px;max-width:92%">${p.desc}</p>
     <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:10px">Tech Stack</div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px">${p.stack.map(s=>`<span class="chip">${s}</span>`).join('')}</div>
-    <a href="${p.link}" target="_blank" data-name="${p.name}" style="display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:#0a0a12;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;font-weight:600;text-decoration:none;padding:12px 22px;border-radius:8px;transition:transform .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">View Project ↗</a>
+    ${p.link && p.link!=='#' ? `<a href="${p.link}" target="_blank" data-name="${p.name}" style="display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:#0a0a12;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;font-weight:600;text-decoration:none;padding:12px 22px;border-radius:8px;transition:transform .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">View Project ↗</a>` : `<button onclick="showToast('Live demo link coming soon — ask Vasu!')" style="display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border-hi);color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;font-weight:600;padding:12px 22px;border-radius:8px;cursor:pointer">Demo Coming Soon</button>`}
   `;
   document.getElementById('pmodal').classList.add('show');
 }
@@ -1019,7 +1019,15 @@ function playLaptopIntro(url, label){
 }
 document.addEventListener('click', e=>{
   const link = e.target.closest('.plnk, #pmodalBody a[target="_blank"]');
-  if(link && link.href && link.href !== '#' && !link.href.endsWith('/#')){
+  if(!link) return;
+  const rawHref = link.getAttribute('href') || '';
+  if(rawHref === '#' || rawHref === '' ){
+    e.preventDefault();
+    e.stopPropagation();
+    showToast('Live demo link coming soon — ask Vasu!');
+    return;
+  }
+  if(link.href){
     e.preventDefault();
     e.stopPropagation();
     const nameEl = link.closest('.proj-card')?.querySelector('.pn');
