@@ -14,8 +14,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#030305;--bg1:#08080f;--bg2:#0e0e1a;--border:rgba(255,255,255,0.06);--border-hi:rgba(255,255,255,0.12);--text:#f0f0f5;--dim:#606075;--mid:#9898b0;--lime:#b8ff3c;--lime-dim:rgba(184,255,60,0.12)}
-[data-theme="light"]{--bg:#f5f5f2;--bg1:#ececea;--bg2:#e2e2e0;--border:rgba(0,0,0,0.08);--border-hi:rgba(0,0,0,0.15);--text:#0c0c10;--dim:#8a8a95;--mid:#4a4a58;--lime:#5c9200;--lime-dim:rgba(92,146,0,0.1)}
+:root{--bg:#030305;--bg1:#08080f;--bg2:#0e0e1a;--border:rgba(255,255,255,0.08);--border-hi:rgba(255,255,255,0.16);--text:#f5f5fa;--dim:#8888a0;--mid:#c4c4d6;--lime:#b8ff3c;--lime-dim:rgba(184,255,60,0.12)}
+[data-theme="light"]{--bg:#f5f5f2;--bg1:#ececea;--bg2:#e2e2e0;--border:rgba(0,0,0,0.1);--border-hi:rgba(0,0,0,0.2);--text:#0c0c10;--dim:#5c5c68;--mid:#2e2e38;--lime:#4d7a00;--lime-dim:rgba(77,122,0,0.1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;transition:background .35s ease,color .35s ease}
@@ -64,6 +64,8 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overf
 .pmodal-box{width:100%;max-width:560px;max-height:80vh;overflow-y:auto;background:var(--bg1);border:1px solid var(--border-hi);border-radius:12px;padding:36px}
 .pmodal-close{float:right;background:none;border:1px solid var(--border-hi);color:var(--mid);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px}
 .proj-card{cursor:pointer}
+.type-cursor{color:var(--lime);animation:blink 0.9s step-start infinite}
+@keyframes blink{50%{opacity:0}}
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(3,3,5,0.92);backdrop-filter:blur(20px)}
 .nav-logo{font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:4px;color:var(--text)}
 .nav-logo span{color:var(--lime)}
@@ -245,7 +247,7 @@ footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify
   <div style="display:flex;align-items:center;gap:14px">
     <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">◐</button>
     <div class="cmdk-badge" onclick="openCmdk()">⌘K</div>
-    <a href="mailto:2303031050462@paruluniversity.ac.in" class="hire-btn">HIRE ME</a>
+    <a href="mailto:2303031050462@paruluniversity.ac.in" class="hire-btn" onclick="burstConfetti(event)">HIRE ME</a>
   </div>
 </nav>
 <div class="cursor-glow" id="cglow"></div>
@@ -253,8 +255,9 @@ footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify
 <div id="hero">
   <div>
     <div class="badge"><div class="dot"></div><span class="badge-txt">Open to Opportunities · Vadodara, India</span></div>
+    <div class="badge" style="margin-top:8px"><span class="badge-txt" id="liveInfo">— · —</span></div>
     <h1 class="hero-name"><span>PENKEY</span><br><span>SRI</span><br><span class="ghost">VASU</span></h1>
-    <p class="role">Software Developer · Cloud Engineer · AI Integrations</p>
+    <p class="role"><span id="typedRole"></span><span class="type-cursor">|</span></p>
     <p class="desc">Building real-world systems that ship — AI-powered civilian safety platforms, document signature tools, and career intelligence apps across React, Spring Boot, and Node.js. B.Tech CSE at Parul University, graduating 2027.</p>
     <div class="btns">
       <a href="#projects" class="btn-p">View Work</a>
@@ -630,6 +633,54 @@ fetch('https://api.github.com/users/pvasu9055-hash')
       if(el) el.dataset.count = d.public_repos;
     }
   }).catch(()=>{});
+// ---- Typing effect on hero role ----
+const roles = ['Software Developer','Cloud Engineer','AI Integrations','Full Stack Builder'];
+let rI=0, cI=0, deleting=false;
+const typedEl = document.getElementById('typedRole');
+function typeLoop(){
+  const word = roles[rI];
+  if(!deleting){
+    cI++;
+    typedEl.textContent = word.slice(0,cI);
+    if(cI===word.length){ deleting=true; setTimeout(typeLoop,1400); return; }
+  } else {
+    cI--;
+    typedEl.textContent = word.slice(0,cI);
+    if(cI===0){ deleting=false; rI=(rI+1)%roles.length; }
+  }
+  setTimeout(typeLoop, deleting?40:80);
+}
+typeLoop();
+
+// ---- Live IST clock + age ----
+const dob = new Date('2005-10-20T00:00:00');
+function updateLiveInfo(){
+  const now = new Date();
+  const ist = new Date(now.toLocaleString('en-US',{timeZone:'Asia/Kolkata'}));
+  const timeStr = ist.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true});
+  const ageMs = now - dob;
+  const age = (ageMs / (1000*60*60*24*365.25)).toFixed(8);
+  document.getElementById('liveInfo').textContent = `${age}y old · ${timeStr} IST`;
+}
+updateLiveInfo();
+setInterval(updateLiveInfo, 50);
+
+// ---- Confetti burst ----
+function burstConfetti(e){
+  const colors = ['#b8ff3c','#f0f0f5','#8888a0'];
+  for(let i=0;i<28;i++){
+    const p = document.createElement('div');
+    const size = Math.random()*6+4;
+    p.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:${size}px;height:${size}px;background:${colors[i%3]};border-radius:${Math.random()>0.5?'50%':'0'};pointer-events:none;z-index:9999;`;
+    document.body.appendChild(p);
+    const angle = Math.random()*Math.PI*2, dist = Math.random()*140+60;
+    const dx = Math.cos(angle)*dist, dy = Math.sin(angle)*dist - 40;
+    p.animate([
+      {transform:'translate(0,0) rotate(0deg)', opacity:1},
+      {transform:`translate(${dx}px,${dy}px) rotate(${Math.random()*360}deg)`, opacity:0}
+    ], {duration:900+Math.random()*400, easing:'cubic-bezier(.2,.8,.2,1)'}).onfinish = ()=>p.remove();
+  }
+}
 </script>
 </body>
 </html>
