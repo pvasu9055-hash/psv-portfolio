@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Penkey Sri Vasu — Software Developer</title>
+<meta name="description" content="Penkey Sri Vasu — Software Developer building AI-powered, cloud-native full-stack apps with React, Node.js, Spring Boot & AWS.">
+<meta property="og:title" content="Penkey Sri Vasu — Software Developer">
+<meta property="og:description" content="AI-powered, cloud-native full-stack apps with React, Node.js, Spring Boot & AWS.">
+<meta property="og:image" content="https://www.vasutech.online/assets/profile.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#030305;--bg1:#08080f;--bg2:#0e0e1a;--border:rgba(255,255,255,0.06);--border-hi:rgba(255,255,255,0.12);--text:#f0f0f5;--dim:#606075;--mid:#9898b0;--lime:#b8ff3c;--lime-dim:rgba(184,255,60,0.12)}
@@ -17,6 +23,47 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overf
 .theme-toggle:hover{border-color:var(--lime);transform:rotate(20deg)}
 .cursor-glow{position:fixed;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(184,255,60,.06) 0%,transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:opacity .3s;top:0;left:0}
 [data-theme="light"] .cursor-glow{background:radial-gradient(circle,rgba(92,146,0,.05) 0%,transparent 70%)}
+
+/* Scroll progress bar */
+#scrollbar{position:fixed;top:0;left:0;height:2px;background:var(--lime);z-index:200;width:0%;box-shadow:0 0 8px var(--lime)}
+
+/* Custom cursor */
+.cdot{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--lime);pointer-events:none;z-index:999;transform:translate(-50%,-50%);transition:width .2s,height .2s,opacity .2s;mix-blend-mode:difference}
+.cring{position:fixed;width:32px;height:32px;border-radius:50%;border:1px solid var(--lime);pointer-events:none;z-index:998;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s,transform .1s ease-out}
+.cdot.hov{width:14px;height:14px}
+.cring.hov{width:52px;height:52px;border-color:rgba(184,255,60,.4)}
+@media(max-width:860px){.cdot,.cring{display:none}}
+
+/* Loading screen */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:1000;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s}
+#loader.hide{opacity:0;visibility:hidden}
+.load-txt{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:6px;color:var(--text)}
+.load-txt span{color:var(--lime)}
+.load-bar{width:180px;height:2px;background:var(--border);margin-top:18px;overflow:hidden}
+.load-fill{height:100%;width:0%;background:var(--lime);animation:loadfill 1.1s ease forwards}
+@keyframes loadfill{to{width:100%}}
+
+/* Command palette */
+#cmdk{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:500;display:none;align-items:flex-start;justify-content:center;padding-top:14vh}
+#cmdk.show{display:flex}
+.cmdk-box{width:100%;max-width:520px;background:var(--bg2);border:1px solid var(--border-hi);border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.cmdk-inp{width:100%;padding:16px 18px;background:transparent;border:none;outline:none;border-bottom:1px solid var(--border);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px}
+.cmdk-list{max-height:300px;overflow-y:auto}
+.cmdk-item{padding:12px 18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.5px;color:var(--mid);cursor:pointer;display:flex;justify-content:space-between;transition:background .15s,color .15s}
+.cmdk-item:hover,.cmdk-item.sel{background:var(--lime-dim);color:var(--lime)}
+.cmdk-hint{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim);padding:9px 18px;border-top:1px solid var(--border)}
+.cmdk-badge{border:1px solid var(--border-hi);border-radius:3px;padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim);cursor:pointer}
+
+/* Toast */
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg2);border:1px solid var(--lime);color:var(--lime);padding:10px 20px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;z-index:600;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Project modal */
+#pmodal{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);z-index:700;display:none;align-items:center;justify-content:center;padding:24px}
+#pmodal.show{display:flex}
+.pmodal-box{width:100%;max-width:560px;max-height:80vh;overflow-y:auto;background:var(--bg1);border:1px solid var(--border-hi);border-radius:12px;padding:36px}
+.pmodal-close{float:right;background:none;border:1px solid var(--border-hi);color:var(--mid);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px}
+.proj-card{cursor:pointer}
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(3,3,5,0.92);backdrop-filter:blur(20px)}
 .nav-logo{font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:4px;color:var(--text)}
 .nav-logo span{color:var(--lime)}
@@ -163,6 +210,29 @@ footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify
 </head>
 <body>
 
+<div id="loader"><div style="text-align:center"><div class="load-txt">P<span>.</span>S<span>.</span>VASU</div><div class="load-bar"><div class="load-fill"></div></div></div></div>
+
+<div id="scrollbar"></div>
+<div class="cdot" id="cdot"></div>
+<div class="cring" id="cring"></div>
+
+<div id="cmdk">
+  <div class="cmdk-box">
+    <input class="cmdk-inp" id="cmdkInp" placeholder="Type a command or search…" autocomplete="off">
+    <div class="cmdk-list" id="cmdkList"></div>
+    <div class="cmdk-hint">↑↓ navigate · ↵ select · esc close</div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<div id="pmodal">
+  <div class="pmodal-box">
+    <button class="pmodal-close" onclick="closeModal()">✕</button>
+    <div id="pmodalBody"></div>
+  </div>
+</div>
+
 <nav>
   <div class="nav-logo">P<span>.</span>S<span>.</span>VASU</div>
   <ul class="nav-links">
@@ -174,6 +244,7 @@ footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify
   </ul>
   <div style="display:flex;align-items:center;gap:14px">
     <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">◐</button>
+    <div class="cmdk-badge" onclick="openCmdk()">⌘K</div>
     <a href="mailto:2303031050462@paruluniversity.ac.in" class="hire-btn">HIRE ME</a>
   </div>
 </nav>
@@ -331,10 +402,11 @@ footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify
     <h2 class="ct rv">Let's Build<br>Together</h2>
     <p class="csub rv">Open to software engineering roles, internships, and freelance projects. Remote or Vadodara.</p>
     <div class="clinks rv">
-      <a href="mailto:2303031050462@paruluniversity.ac.in" class="clink">✉ Email</a>
+      <a href="mailto:pvasu9055@gmail.com" class="clink">✉ Email</a>
+      <button onclick="copyEmail()" class="clink" style="border:1px solid var(--border-hi);background:none;cursor:pointer;font:inherit">⧉ Copy Email</button>
       <a href="https://linkedin.com/" class="clink" target="_blank">in LinkedIn</a>
       <a href="https://github.com/pvasu9055-hash" class="clink" target="_blank">⌥ GitHub</a>
-      <a href="https://penkeysrivasu-portfolio.vercel.app/" class="clink" target="_blank">⊹ Portfolio</a>
+      <a href="https://vasutech.online/" class="clink" target="_blank">⊹ Portfolio</a>
       <a href="tel:+919014735556" class="clink">☎ +91 9014 735 556</a>
     </div>
   </div>
@@ -449,6 +521,115 @@ async function send(){
 
 inpEl.addEventListener('keydown', e=>{ if(e.key==='Enter') send(); });
 function hint(btn){ inpEl.value = btn.textContent.replace('→ ','').trim(); send(); }
+
+// ---- Loading screen ----
+window.addEventListener('load', ()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('hide'), 700);
+});
+
+// ---- Custom cursor ----
+const cdot = document.getElementById('cdot'), cring = document.getElementById('cring');
+document.addEventListener('mousemove', e=>{
+  cdot.style.left = e.clientX+'px'; cdot.style.top = e.clientY+'px';
+  cring.style.left = e.clientX+'px'; cring.style.top = e.clientY+'px';
+});
+document.querySelectorAll('a,button,.proj-card,.cert').forEach(el=>{
+  el.addEventListener('mouseenter', ()=>{ cdot.classList.add('hov'); cring.classList.add('hov'); });
+  el.addEventListener('mouseleave', ()=>{ cdot.classList.remove('hov'); cring.classList.remove('hov'); });
+});
+
+// ---- Scroll progress bar ----
+window.addEventListener('scroll', ()=>{
+  const h = document.documentElement;
+  const pct = (h.scrollTop)/(h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('scrollbar').style.width = pct + '%';
+});
+
+// ---- Toast ----
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2200);
+}
+function copyEmail(){
+  navigator.clipboard.writeText('pvasu9055@gmail.com');
+  showToast('Email copied to clipboard ✓');
+}
+
+// ---- Project modal ----
+const projectData = {
+  docsign: {name:'DocSign', tag:'AI-Powered Digital Document Signature Platform', desc:'A cloud-based platform enabling users to upload, digitally sign, share, and manage PDF documents securely — replacing inefficient paper-based workflows. Full stack built with JWT authentication, AI-powered document summarization, public signing links, audit logging, and automated email notifications via Nodemailer. Deployed as a scalable multi-cloud app: frontend on Vercel, backend on AWS Elastic Beanstalk, with Cloudflare integration for secure, production-ready delivery.', stack:['React.js','TypeScript','Node.js','Express.js','PostgreSQL','Supabase','Prisma','AWS Elastic Beanstalk','Vercel','Cloudflare'], link:'#'},
+  civilianshield: {name:'CivilianShield', tag:'AI-Powered Civilian Safety Platform', desc:'A production-ready, full-stack civilian safety platform with 5+ REST API endpoints serving real users. Includes an SOS alert system, incident mapping, and emergency contact module — iterated across 3 major versions to reach the final stable release. Integrates an AI-based threat detection pipeline to automate emergency alert handling and improve response efficiency.', stack:['Spring Boot','REST API','H2','WebSocket','React'], link:'https://github.com/pvasu9055-hash/CivilianShield'},
+  skillgap: {name:'Skill Gap Analyzer', tag:'AI Career Intelligence Tool', desc:'An AI-powered career intelligence platform that analyzes resumes against job descriptions and generates prioritized skill-gap reports in under 3 seconds. Leverages Groq LLM for rapid inference, streamlining resume and job description analysis using AI-powered insights.', stack:['React','Node.js','Groq API','Vercel'], link:'https://skillgap-frontend-eight.vercel.app'}
+};
+function openModal(key){
+  const p = projectData[key];
+  if(!p) return;
+  document.getElementById('pmodalBody').innerHTML = `
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--lime);text-transform:uppercase;margin-bottom:8px">${p.tag}</div>
+    <div style="font-family:'Bebas Neue',cursive;font-size:34px;letter-spacing:1px;margin-bottom:16px">${p.name}</div>
+    <p style="color:var(--mid);line-height:1.7;font-size:14px;margin-bottom:20px">${p.desc}</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">${p.stack.map(s=>`<span class="chip">${s}</span>`).join('')}</div>
+    <a href="${p.link}" target="_blank" style="color:var(--lime);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-decoration:none">View Project ↗</a>
+  `;
+  document.getElementById('pmodal').classList.add('show');
+}
+function closeModal(){ document.getElementById('pmodal').classList.remove('show'); }
+document.getElementById('pmodal').addEventListener('click', e=>{ if(e.target.id==='pmodal') closeModal(); });
+
+const projKeys = ['docsign','civilianshield','skillgap'];
+document.querySelectorAll('.proj-card').forEach((card,i)=>{
+  card.addEventListener('click', ()=> openModal(projKeys[i]));
+});
+
+// ---- Command palette (Cmd+K / Ctrl+K) ----
+const cmdActions = [
+  {label:'Go to Projects', action:()=>location.hash='#projects'},
+  {label:'Go to Experience', action:()=>location.hash='#experience'},
+  {label:'Go to Skills', action:()=>location.hash='#skills'},
+  {label:'Ask My AI', action:()=>location.hash='#ai'},
+  {label:'Contact', action:()=>location.hash='#contact'},
+  {label:'Download Resume', action:()=>window.open('assets/resume.pdf','_blank')},
+  {label:'Copy Email', action:()=>copyEmail()},
+  {label:'Toggle Theme', action:()=>toggleTheme()},
+  {label:'Open GitHub', action:()=>window.open('https://github.com/pvasu9055-hash','_blank')},
+];
+const cmdk = document.getElementById('cmdk'), cmdkInp = document.getElementById('cmdkInp'), cmdkList = document.getElementById('cmdkList');
+let cmdSel = 0;
+function renderCmdk(filter=''){
+  const items = cmdActions.filter(a=>a.label.toLowerCase().includes(filter.toLowerCase()));
+  cmdkList.innerHTML = items.map((a,i)=>`<div class="cmdk-item ${i===cmdSel?'sel':''}" data-i="${i}">${a.label}<span>↵</span></div>`).join('') || '<div class="cmdk-item">No results</div>';
+  return items;
+}
+function openCmdk(){ cmdk.classList.add('show'); cmdkInp.value=''; cmdSel=0; renderCmdk(); cmdkInp.focus(); }
+function closeCmdk(){ cmdk.classList.remove('show'); }
+document.addEventListener('keydown', e=>{
+  if((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='k'){ e.preventDefault(); cmdk.classList.contains('show')?closeCmdk():openCmdk(); }
+  if(e.key==='Escape') closeCmdk();
+  if(cmdk.classList.contains('show')){
+    const items = renderCmdk(cmdkInp.value);
+    if(e.key==='ArrowDown'){ e.preventDefault(); cmdSel=Math.min(cmdSel+1,items.length-1); renderCmdk(cmdkInp.value); }
+    if(e.key==='ArrowUp'){ e.preventDefault(); cmdSel=Math.max(cmdSel-1,0); renderCmdk(cmdkInp.value); }
+    if(e.key==='Enter' && items[cmdSel]){ items[cmdSel].action(); closeCmdk(); }
+  }
+});
+cmdkInp.addEventListener('input', ()=>{ cmdSel=0; renderCmdk(cmdkInp.value); });
+cmdkList.addEventListener('click', e=>{
+  const item = e.target.closest('.cmdk-item');
+  if(item){ const items = renderCmdk(cmdkInp.value); items[+item.dataset.i]?.action(); closeCmdk(); }
+});
+cmdk.addEventListener('click', e=>{ if(e.target.id==='cmdk') closeCmdk(); });
+
+// ---- Live GitHub stats ----
+fetch('https://api.github.com/users/pvasu9055-hash')
+  .then(r=>r.json())
+  .then(d=>{
+    if(d.public_repos!==undefined){
+      const el = document.querySelector('[data-count="5"]');
+      if(el) el.dataset.count = d.public_repos;
+    }
+  }).catch(()=>{});
 </script>
 </body>
 </html>
