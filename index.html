@@ -110,6 +110,35 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overf
 .term-inside-body .tl-out{color:#c8ffb0}
 @media(max-width:640px){.mac-section{padding:48px 20px}}
 
+/* Capabilities — pinned feature reel */
+.cap-section{position:relative;height:400vh;background:var(--bg1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+.cap-head{max-width:1200px;margin:0 auto;padding:64px 48px 0;text-align:center}
+.cap-pin{height:100vh;position:sticky;top:0;display:flex;align-items:center;overflow:hidden}
+.cap-track{display:flex;will-change:transform}
+.cap-panel{width:100vw;height:100vh;flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:5vw;padding:0 8vw}
+.cap-copy{max-width:380px}
+.cap-num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--lime)}
+.cap-title2{font-family:'Bebas Neue',cursive;font-size:clamp(30px,4.2vw,52px);letter-spacing:1px;margin:10px 0 18px;line-height:1.03}
+.cap-desc{font-size:14px;line-height:1.8;color:var(--mid);margin-bottom:22px}
+.cap-tags{display:flex;flex-wrap:wrap;gap:6px}
+.cap-win{width:min(46vw,560px);border-radius:12px;overflow:hidden;background:linear-gradient(180deg,var(--bg2),var(--bg));border:1px solid var(--border-hi);box-shadow:0 40px 100px rgba(0,0,0,.5);transform:perspective(1200px) rotateY(-4deg);transition:transform .5s ease}
+.cap-panel:hover .cap-win{transform:perspective(1200px) rotateY(0deg)}
+.cap-win-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#12121e;border-bottom:1px solid var(--border)}
+.cap-win-dot{width:9px;height:9px;border-radius:50%}
+.cap-win-title{margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:1px}
+.cap-win-body{padding:18px 20px;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.9;min-height:240px}
+.cap-progress{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2}
+.cap-progress span{width:22px;height:2px;background:var(--border-hi);transition:background .3s}
+.cap-progress span.on{background:var(--lime)}
+@media(max-width:860px){
+  .cap-section{height:auto}
+  .cap-pin{height:auto;position:static;display:block}
+  .cap-track{display:block;transform:none !important}
+  .cap-panel{width:auto;height:auto;flex-direction:column;padding:48px 20px;gap:24px}
+  .cap-win{width:100%}
+  .cap-progress{display:none}
+}
+
 /* 3D Laptop Opening Intro */
 #laptopIntro{position:fixed;inset:0;background:radial-gradient(ellipse at center,#111120,#030305);z-index:9998;display:none;align-items:center;justify-content:center;perspective:1600px}
 #laptopIntro.show{display:flex}
@@ -429,6 +458,73 @@ footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify
   </div>
 </section>
 
+<section id="capabilities" class="cap-section">
+  <div class="cap-head rv">
+    <div class="mac-eyebrow">Core Capabilities</div>
+    <div class="mac-title">Built To Ship, Not Just Demo</div>
+  </div>
+  <div class="cap-pin">
+    <div class="cap-track" id="capTrack">
+
+      <div class="cap-panel">
+        <div class="cap-copy">
+          <div class="cap-num">01</div>
+          <div class="cap-title2">Full-Stack Engineering</div>
+          <p class="cap-desc">From schema to UI — Next.js and Node.js APIs backed by PostgreSQL, built the way SmartERP was: modular, typed, and paced for a 14-day sprint, not a weekend hack.</p>
+          <div class="cap-tags"><span class="chip">Next.js</span><span class="chip">Node.js</span><span class="chip">PostgreSQL</span><span class="chip">TypeScript</span></div>
+        </div>
+        <div class="cap-win">
+          <div class="cap-win-bar"><div class="cap-win-dot" style="background:#ff5f56"></div><div class="cap-win-dot" style="background:#ffbd2e"></div><div class="cap-win-dot" style="background:#27c93f"></div><div class="cap-win-title">ledger.service.ts</div></div>
+          <div class="cap-win-body"><span class="li-code c">// SmartERP — double-entry post</span><br><span class="li-code k">export async function</span> postEntry(tx) {<br>&nbsp;&nbsp;<span class="li-code k">const</span> balanced = tx.debits === tx.credits;<br>&nbsp;&nbsp;<span class="li-code k">if</span> (!balanced) <span class="li-code k">throw new</span> Error(<span class="li-code s">'Unbalanced entry'</span>);<br>&nbsp;&nbsp;<span class="li-code k">return</span> db.ledger.create({ data: tx });<br>}</div>
+        </div>
+      </div>
+
+      <div class="cap-panel">
+        <div class="cap-copy">
+          <div class="cap-num">02</div>
+          <div class="cap-title2">Cloud Deploy, Debugged Live</div>
+          <p class="cap-desc">When AWS Elastic Beanstalk hangs on t3.micro, I don't just restart it — I SSM into the instance and fix it surgically. Same discipline keeps api.vasutech.online up for DocSign.</p>
+          <div class="cap-tags"><span class="chip">AWS EB</span><span class="chip">SSM</span><span class="chip">Cloudflare DNS</span><span class="chip">Docker</span></div>
+        </div>
+        <div class="cap-win">
+          <div class="cap-win-bar"><div class="cap-win-dot" style="background:#ff5f56"></div><div class="cap-win-dot" style="background:#ffbd2e"></div><div class="cap-win-dot" style="background:#27c93f"></div><div class="cap-win-title">vasu@ec2:~</div></div>
+          <div class="cap-win-body"><span class="tl-cmd">$ aws ssm start-session --target i-0a3f...</span><br><span class="tl-out">Starting session...</span><br><span class="tl-cmd">$ sudo systemctl restart web</span><br><span class="tl-out">✓ web.service restarted</span><br><span class="tl-cmd">$ curl -sI api.vasutech.online | head -1</span><br><span class="tl-out">HTTP/1.1 200 OK</span></div>
+        </div>
+      </div>
+
+      <div class="cap-panel">
+        <div class="cap-copy">
+          <div class="cap-num">03</div>
+          <div class="cap-title2">AI Where It Adds Value</div>
+          <p class="cap-desc">Groq-powered resume parsing and career coaching inside the Skill Gap Analyzer — fast inference, free tier, zero bloat. AI as a feature, not a gimmick bolted on for the demo.</p>
+          <div class="cap-tags"><span class="chip">Groq API</span><span class="chip">PDF Parsing</span><span class="chip">Prompt Design</span></div>
+        </div>
+        <div class="cap-win">
+          <div class="cap-win-bar"><div class="cap-win-dot" style="background:#ff5f56"></div><div class="cap-win-dot" style="background:#ffbd2e"></div><div class="cap-win-dot" style="background:#27c93f"></div><div class="cap-win-title">skillgap · groq</div></div>
+          <div class="cap-win-body"><span class="li-code c">// resume vs JD gap check</span><br><span class="tl-cmd">POST /v1/chat/completions</span><br><span class="tl-out">model: llama-3.3-70b-versatile</span><br><span class="tl-out">match_score: 78%</span><br><span class="tl-out">missing: ["Kubernetes", "GraphQL"]</span></div>
+        </div>
+      </div>
+
+      <div class="cap-panel">
+        <div class="cap-copy">
+          <div class="cap-num">04</div>
+          <div class="cap-title2">Data Modeled Right</div>
+          <p class="cap-desc">Prisma-managed PostgreSQL schemas that hold up under audit trails and role-based access — the backbone of DocSign, the Bug Bounty Platform, and SmartERP alike.</p>
+          <div class="cap-tags"><span class="chip">Prisma</span><span class="chip">PostgreSQL</span><span class="chip">RBAC</span></div>
+        </div>
+        <div class="cap-win">
+          <div class="cap-win-bar"><div class="cap-win-dot" style="background:#ff5f56"></div><div class="cap-win-dot" style="background:#ffbd2e"></div><div class="cap-win-dot" style="background:#27c93f"></div><div class="cap-win-title">schema.prisma</div></div>
+          <div class="cap-win-body"><span class="li-code k">model</span> AuditLog {<br>&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;&nbsp;@id @default(cuid())<br>&nbsp;&nbsp;action&nbsp;&nbsp;String<br>&nbsp;&nbsp;actorId&nbsp;String<br>&nbsp;&nbsp;at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DateTime&nbsp;@default(now())<br>}</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="cap-progress" id="capProgress">
+      <span class="on"></span><span></span><span></span><span></span>
+    </div>
+  </div>
+</section>
+
 <section id="skills">
   <div class="wrap">
     <span class="sec-tag rv">01 — Skills</span>
@@ -624,6 +720,30 @@ const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
 },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// Capabilities — pinned horizontal feature reel
+(function(){
+  const section = document.getElementById('capabilities');
+  const track = document.getElementById('capTrack');
+  const dots = document.querySelectorAll('#capProgress span');
+  if(!section || !track) return;
+  const panelCount = track.children.length;
+  function isMobile(){ return window.innerWidth <= 860; }
+  function update(){
+    if(isMobile()){ track.style.transform=''; return; }
+    const rect = section.getBoundingClientRect();
+    const total = rect.height - window.innerHeight;
+    let progress = total > 0 ? -rect.top / total : 0;
+    progress = Math.max(0, Math.min(1, progress));
+    const maxShift = (panelCount - 1) * window.innerWidth;
+    track.style.transform = `translateX(-${progress * maxShift}px)`;
+    const idx = Math.min(panelCount - 1, Math.floor(progress * panelCount + 0.0001));
+    dots.forEach((d,i)=> d.classList.toggle('on', i===idx));
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+})();
 
 const skObs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.style.width=e.target.dataset.w+'%'; skObs.unobserve(e.target); } });
