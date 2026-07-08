@@ -130,8 +130,26 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overf
 .li-label{position:absolute;bottom:-52px;left:50%;transform:translateX(-50%);width:280px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);opacity:0;transition:opacity .4s 1.5s}
 #laptopIntro.opening .li-label{opacity:1}
 .li-label .lime{color:var(--lime)}
-.li-welcome{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--lime);text-shadow:0 0 16px rgba(184,255,60,.5);opacity:0;transition:opacity .4s;background:#08080f;padding:0 20px}
+.li-welcome{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--lime);text-shadow:0 0 16px rgba(184,255,60,.5);opacity:0;transition:opacity .4s;background:#08080f;padding:0 16px;gap:10px}
 .li-welcome.show{opacity:1}
+.li-photo{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--lime);box-shadow:0 0 20px rgba(184,255,60,.4);opacity:0;transform:scale(.7);transition:opacity .5s,transform .5s}
+.li-photo.show{opacity:1;transform:scale(1)}
+.li-msg{opacity:0;transition:opacity .3s}
+.li-msg.show{opacity:1}
+
+/* Scroll to top with progress ring */
+#toTop{position:fixed;bottom:24px;left:24px;width:46px;height:46px;z-index:850;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s}
+#toTop.show{opacity:1;pointer-events:auto}
+#toTop svg{transform:rotate(-90deg)}
+#toTop circle{fill:none;stroke-width:3}
+#toTop .ring-bg{stroke:var(--border-hi)}
+#toTop .ring-fg{stroke:var(--lime);stroke-linecap:round;transition:stroke-dashoffset .1s linear}
+#toTop .arrow{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--lime);font-size:14px}
+
+/* Share buttons */
+.share-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.share-btn{display:inline-flex;align-items:center;gap:6px;background:var(--bg2);border:1px solid var(--border-hi);color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;padding:8px 14px;border-radius:6px;cursor:pointer;text-decoration:none;transition:color .2s,border-color .2s}
+.share-btn:hover{color:var(--lime);border-color:var(--lime)}
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(3,3,5,0.92);backdrop-filter:blur(20px)}
 .nav-logo{font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:4px;color:var(--text)}
 .nav-logo span{color:var(--lime)}
@@ -279,9 +297,13 @@ footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify
 <body>
 
 <canvas id="particleCanvas"></canvas>
-<div id="loader"><div style="text-align:center"><div class="load-txt">P<span>.</span>S<span>.</span>VASU</div><div class="load-bar"><div class="load-fill"></div></div></div></div>
 
 <div class="term-hint" id="termHint" onclick="openTerminal()">press ` for terminal_</div>
+
+<div id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="46" height="46"><circle class="ring-bg" cx="23" cy="23" r="19"/><circle class="ring-fg" id="ringFg" cx="23" cy="23" r="19"/></svg>
+  <div class="arrow">↑</div>
+</div>
 <div id="terminal">
   <div class="term-bar">
     <div class="term-dot" style="background:#ff5f56"></div>
@@ -327,7 +349,10 @@ footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify
       <div class="li-screen">
         <div class="li-cam"></div>
         <div class="li-code" id="liCode"></div>
-        <div class="li-welcome" id="liWelcome"></div>
+        <div class="li-welcome" id="liWelcome">
+          <img class="li-photo" id="liPhoto" src="profile.jpg.jpeg" alt="Vasu">
+          <div class="li-msg" id="liMsg"></div>
+        </div>
       </div>
     </div>
     <div class="li-base"></div>
@@ -536,6 +561,12 @@ footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify
       <a href="https://vasutech.online/" class="clink plnk" data-name="Portfolio" target="_blank">⊹ Portfolio</a>
       <a href="tel:+919014735556" class="clink">☎ +91 9014 735 556</a>
     </div>
+    <div class="share-row rv" style="justify-content:center">
+      <a class="share-btn" target="_blank" href="https://wa.me/?text=Check%20out%20Vasu's%20portfolio%20%E2%86%92%20https%3A%2F%2Fwww.vasutech.online%2F">↗ WhatsApp</a>
+      <a class="share-btn" target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.vasutech.online%2F">↗ LinkedIn</a>
+      <a class="share-btn" target="_blank" href="https://twitter.com/intent/tweet?text=Check%20out%20this%20portfolio&url=https%3A%2F%2Fwww.vasutech.online%2F">↗ X / Twitter</a>
+      <button class="share-btn" onclick="navigator.clipboard.writeText('https://www.vasutech.online/');showToast('Portfolio link copied ✓')">⧉ Copy Link</button>
+    </div>
   </div>
 </section>
 
@@ -649,10 +680,63 @@ async function send(){
 inpEl.addEventListener('keydown', e=>{ if(e.key==='Enter') send(); });
 function hint(btn){ inpEl.value = btn.textContent.replace('→ ','').trim(); send(); }
 
-// ---- Loading screen ----
+// ---- Entry laptop animation (plays once when site loads) ----
 window.addEventListener('load', ()=>{
-  setTimeout(()=>document.getElementById('loader').classList.add('hide'), 700);
+  playEntryIntro();
 });
+function playEntryIntro(){
+  const overlay = document.getElementById('laptopIntro');
+  const codeEl = document.getElementById('liCode');
+  const welcomeEl = document.getElementById('liWelcome');
+  const photoEl = document.getElementById('liPhoto');
+  const msgEl = document.getElementById('liMsg');
+  const targetEl = document.getElementById('liTarget');
+  const labelWrap = overlay.querySelector('.li-label');
+  targetEl.textContent = 'portfolio';
+  codeEl.innerHTML = ''; codeEl.style.display = '';
+  msgEl.textContent = ''; welcomeEl.classList.remove('show'); photoEl.classList.remove('show'); msgEl.classList.remove('show');
+  overlay.classList.add('show');
+  requestAnimationFrame(()=> overlay.classList.add('opening'));
+
+  let li = 0;
+  const typeNext = ()=>{
+    if(li >= liCodeLines.length){ setTimeout(typeWelcome, 400); return; }
+    const div = document.createElement('div');
+    codeEl.appendChild(div);
+    let ci = 0;
+    const full = liCodeLines[li];
+    const plain = full.replace(/<[^>]+>/g,'');
+    const iv = setInterval(()=>{
+      ci++;
+      div.textContent = plain.slice(0,ci);
+      if(ci>=plain.length){
+        clearInterval(iv);
+        div.innerHTML = full;
+        li++;
+        setTimeout(typeNext, 80);
+      }
+    }, 12);
+  };
+  function typeWelcome(){
+    codeEl.style.display = 'none';
+    if(labelWrap) labelWrap.style.opacity = '0';
+    welcomeEl.classList.add('show');
+    photoEl.classList.add('show');
+    setTimeout(()=> msgEl.classList.add('show'), 250);
+    const msg = 'Heyy There!! Welcome Love....';
+    let wi = 0;
+    const wiv = setInterval(()=>{
+      wi++;
+      msgEl.textContent = msg.slice(0,wi);
+      if(wi>=msg.length) clearInterval(wiv);
+    }, 45);
+  }
+  setTimeout(typeNext, 900);
+  setTimeout(()=>{
+    overlay.classList.remove('opening');
+    setTimeout(()=>{ overlay.classList.remove('show'); if(labelWrap) labelWrap.style.opacity=''; }, 500);
+  }, 3400);
+}
 
 // ---- Custom cursor ----
 const cdot = document.getElementById('cdot'), cring = document.getElementById('cring');
@@ -670,6 +754,12 @@ window.addEventListener('scroll', ()=>{
   const h = document.documentElement;
   const pct = (h.scrollTop)/(h.scrollHeight - h.clientHeight) * 100;
   document.getElementById('scrollbar').style.width = pct + '%';
+  const toTop = document.getElementById('toTop');
+  const ring = document.getElementById('ringFg');
+  const circumference = 2 * Math.PI * 19;
+  ring.style.strokeDasharray = circumference;
+  ring.style.strokeDashoffset = circumference - (pct/100)*circumference;
+  toTop.classList.toggle('show', h.scrollTop > 400);
 });
 
 // ---- Toast ----
@@ -968,11 +1058,13 @@ function playLaptopIntro(url, label){
   const overlay = document.getElementById('laptopIntro');
   const codeEl = document.getElementById('liCode');
   const welcomeEl = document.getElementById('liWelcome');
+  const photoEl = document.getElementById('liPhoto');
+  const msgEl = document.getElementById('liMsg');
   const targetEl = document.getElementById('liTarget');
   targetEl.textContent = label || 'project';
   codeEl.innerHTML = '';
-  welcomeEl.textContent = '';
-  welcomeEl.classList.remove('show');
+  msgEl.textContent = '';
+  welcomeEl.classList.remove('show'); photoEl.classList.remove('show'); msgEl.classList.remove('show');
   codeEl.style.display = '';
   overlay.classList.add('show');
   requestAnimationFrame(()=> overlay.classList.add('opening'));
@@ -1000,11 +1092,13 @@ function playLaptopIntro(url, label){
   function typeWelcome(){
     codeEl.style.display = 'none';
     welcomeEl.classList.add('show');
+    photoEl.classList.add('show');
+    setTimeout(()=> msgEl.classList.add('show'), 250);
     const msg = 'Heyy There!! Welcome Love....';
     let wi = 0;
     const wiv = setInterval(()=>{
       wi++;
-      welcomeEl.textContent = msg.slice(0,wi);
+      msgEl.textContent = msg.slice(0,wi);
       if(wi>=msg.length) clearInterval(wiv);
     }, 45);
   }
