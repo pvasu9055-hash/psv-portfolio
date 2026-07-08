@@ -735,7 +735,7 @@ function playEntryIntro(){
   setTimeout(()=>{
     overlay.classList.remove('opening');
     setTimeout(()=>{ overlay.classList.remove('show'); if(labelWrap) labelWrap.style.opacity=''; }, 500);
-  }, 3400);
+  }, 6200);
 }
 
 // ---- Custom cursor ----
@@ -1109,7 +1109,7 @@ function playLaptopIntro(url, label){
     window.open(url, '_blank');
     overlay.classList.remove('opening');
     setTimeout(()=> overlay.classList.remove('show'), 400);
-  }, 3600);
+  }, 6400);
 }
 document.addEventListener('click', e=>{
   const link = e.target.closest('.plnk, #pmodalBody a[target="_blank"]');
