@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <link rel="canonical" href="https://www.vasutech.online/" />
@@ -140,7 +140,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overf
 }
 
 /* 3D Laptop Opening Intro */
-#laptopIntro{position:fixed;inset:0;background:radial-gradient(ellipse at center,#111120,#030305);z-index:9998;display:none;align-items:center;justify-content:center;perspective:1600px}
+#laptopIntro{position:fixed;inset:0;background:radial-gradient(ellipse at center,#111120,#030305);z-index:9998;display:none;align-items:center;justify-content:center;perspective:1600px;pointer-events:none}
 #laptopIntro.show{display:flex}
 .li-rig{position:relative;width:340px;height:220px;transform-style:preserve-3d;transform:rotateX(10deg)}
 .li-lid{position:absolute;left:0;top:0;width:340px;height:210px;background:linear-gradient(155deg,#2a2a34,#111118);border-radius:14px 14px 4px 4px;transform-origin:bottom center;transform:rotateX(90deg);box-shadow:0 20px 60px rgba(0,0,0,.6);transition:transform 1.3s cubic-bezier(.2,.8,.2,1)}
@@ -240,12 +240,16 @@ section{padding:90px 0}
 .mq-track{display:flex;width:max-content;animation:scroll 22s linear infinite}
 .mq-item{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;white-space:nowrap;color:rgba(184,255,60,.7);padding:0 36px;border-right:1px solid rgba(184,255,60,.15)}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
 .proj-card{background:var(--bg);padding:36px 30px;position:relative;overflow:hidden;transition:background .3s,transform .3s;transform-style:preserve-3d;will-change:transform}
 .proj-card:hover{background:var(--bg1)}
 .proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:0;background:linear-gradient(90deg,var(--lime),transparent);transition:height .4s}
 .proj-card:hover::before{height:2px}
 .pi{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--dim);margin-bottom:16px}
+.proj-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--border-hi);margin-bottom:20px;background:var(--bg2);display:block}
+.proj-thumb-wrap{position:relative;margin-bottom:20px;border-radius:8px;overflow:hidden;border:1px solid var(--border-hi)}
+.proj-thumb-wrap img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block;transition:transform .4s}
+.proj-card:hover .proj-thumb-wrap img{transform:scale(1.04)}
 .pn{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:1px;color:var(--text);margin-bottom:12px;transition:color .3s}
 .proj-card:hover .pn{color:var(--lime)}
 .pd{font-size:12px;line-height:1.7;color:var(--dim);margin-bottom:20px}
@@ -566,9 +570,10 @@ footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify
     <h2 class="sec-h rv">Selected Work</h2>
   </div>
   <div class="proj-grid">
-    <div class="proj-card rv"><div class="pi">001 · 2026</div><div class="pn">DocSign</div><div class="pd">AI-powered digital document signature platform — upload, sign, share, and manage PDFs securely. JWT auth, AI document summarization, public signing links, audit logging, automated email via Nodemailer. Multi-cloud: Vercel frontend, AWS Elastic Beanstalk backend, Cloudflare.</div><div class="chips"><span class="chip">React.js</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Prisma</span><span class="chip">Supabase</span><span class="chip">AWS EB</span></div><a href="https://docsign.vasutech.online/" target="_blank" data-name="DocSign" class="plnk">Live Demo ↗</a></div>
-    <div class="proj-card rv"><div class="pi">002 · Mar 2026</div><div class="pn">CivilianShield</div><div class="pd">Full-stack civilian safety platform, production-ready with 5+ REST API endpoints serving real users. SOS alert system, incident mapping, emergency contact module — iterated across 3 major versions, with an AI-based threat detection pipeline.</div><div class="chips"><span class="chip">Spring Boot</span><span class="chip">REST API</span><span class="chip">H2</span><span class="chip">WebSocket</span><span class="chip">React</span></div><a href="https://github.com/pvasu9055-hash/CivilianShield" target="_blank" class="plnk">GitHub ↗</a></div>
-    <div class="proj-card rv"><div class="pi">003 · Mar 2026</div><div class="pn">Skill Gap Analyzer</div><div class="pd">AI-powered career intelligence platform analyzing resumes against job descriptions, generating prioritized skill-gap reports in under 3 seconds using Groq LLM for rapid inference.</div><div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">Groq API</span><span class="chip">Vercel</span></div><a href="https://analyzer.vasutech.online/" target="_blank" data-name="Skill Gap Analyzer" class="plnk">Live Demo ↗</a></div>
+    <div class="proj-card rv"><div class="proj-thumb-wrap"><img class="proj-thumb" src="projects/docsign.png" alt="DocSign product screenshot" loading="lazy" onerror="this.closest('.proj-thumb-wrap').style.display='none'"></div><div class="pi">001 · 2026</div><div class="pn">DocSign</div><div class="pd">AI-powered digital document signature platform — upload, sign, share, and manage PDFs securely. JWT auth, AI document summarization, public signing links, audit logging, automated email via Nodemailer. Multi-cloud: Vercel frontend, AWS Elastic Beanstalk backend, Cloudflare.</div><div class="chips"><span class="chip">React.js</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Prisma</span><span class="chip">Supabase</span><span class="chip">AWS EB</span></div><a href="https://docsign.vasutech.online/" target="_blank" data-name="DocSign" class="plnk">Live Demo ↗</a></div>
+    <div class="proj-card rv"><div class="proj-thumb-wrap"><img class="proj-thumb" src="projects/civilianshield.png" alt="CivilianShield product screenshot" loading="lazy" onerror="this.closest('.proj-thumb-wrap').style.display='none'"></div><div class="pi">002 · Mar 2026</div><div class="pn">CivilianShield</div><div class="pd">Full-stack civilian safety platform, production-ready with 5+ REST API endpoints serving real users. SOS alert system, incident mapping, emergency contact module — iterated across 3 major versions, with an AI-based threat detection pipeline.</div><div class="chips"><span class="chip">Spring Boot</span><span class="chip">REST API</span><span class="chip">H2</span><span class="chip">WebSocket</span><span class="chip">React</span></div><a href="https://github.com/pvasu9055-hash/CivilianShield" target="_blank" class="plnk">GitHub ↗</a></div>
+    <div class="proj-card rv"><div class="proj-thumb-wrap"><img class="proj-thumb" src="projects/skillgap.png" alt="Skill Gap Analyzer product screenshot" loading="lazy" onerror="this.closest('.proj-thumb-wrap').style.display='none'"></div><div class="pi">003 · Mar 2026</div><div class="pn">Skill Gap Analyzer</div><div class="pd">AI-powered career intelligence platform analyzing resumes against job descriptions, generating prioritized skill-gap reports in under 3 seconds using Groq LLM for rapid inference.</div><div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">Groq API</span><span class="chip">Vercel</span></div><a href="https://analyzer.vasutech.online/" target="_blank" data-name="Skill Gap Analyzer" class="plnk">Live Demo ↗</a></div>
+    <div class="proj-card rv"><div class="proj-thumb-wrap"><img class="proj-thumb" src="projects/aicode.png" alt="AI Code Review Assistant product screenshot" loading="lazy" onerror="this.closest('.proj-thumb-wrap').style.display='none'"></div><div class="pi">004 · 2026</div><div class="pn">AI Code Review Assistant</div><div class="pd">AI-powered code review tool that analyzes pull requests and repositories, flagging bugs, security issues, and style violations with actionable, inline suggestions — cutting manual review time.</div><div class="chips"><span class="chip">React.js</span><span class="chip">Node.js</span><span class="chip">AI API</span><span class="chip">GitHub API</span></div><a href="https://aicode.vasutech.online/login" target="_blank" data-name="AI Code Review Assistant" class="plnk">Live Demo ↗</a></div>
   </div>
 </section>
 
@@ -843,7 +848,7 @@ function playEntryIntro(){
     welcomeEl.classList.add('show');
     photoEl.classList.add('show');
     setTimeout(()=> msgEl.classList.add('show'), 250);
-    const msg = 'Heyy There!! Welcome Love....';
+    const msg = 'Welcome — glad you\'re here.';
     let wi = 0;
     const wiv = setInterval(()=>{
       wi++;
@@ -896,15 +901,17 @@ function copyEmail(){
 
 // ---- Project modal ----
 const projectData = {
-  docsign: {name:'DocSign', tag:'AI-Powered Digital Document Signature Platform', desc:'A cloud-based platform enabling users to upload, digitally sign, share, and manage PDF documents securely — replacing inefficient paper-based workflows. Full stack built with JWT authentication, AI-powered document summarization, public signing links, audit logging, and automated email notifications via Nodemailer. Deployed as a scalable multi-cloud app: frontend on Vercel, backend on AWS Elastic Beanstalk, with Cloudflare integration for secure, production-ready delivery.', stack:['React.js','TypeScript','Node.js','Express.js','PostgreSQL','Supabase','Prisma','AWS Elastic Beanstalk','Vercel','Cloudflare'], link:'https://docsign.vasutech.online/'},
-  civilianshield: {name:'CivilianShield', tag:'AI-Powered Civilian Safety Platform', desc:'A production-ready, full-stack civilian safety platform with 5+ REST API endpoints serving real users. Includes an SOS alert system, incident mapping, and emergency contact module — iterated across 3 major versions to reach the final stable release. Integrates an AI-based threat detection pipeline to automate emergency alert handling and improve response efficiency.', stack:['Spring Boot','REST API','H2','WebSocket','React'], link:'https://github.com/pvasu9055-hash/CivilianShield'},
-  skillgap: {name:'Skill Gap Analyzer', tag:'AI Career Intelligence Tool', desc:'An AI-powered career intelligence platform that analyzes resumes against job descriptions and generates prioritized skill-gap reports in under 3 seconds. Leverages Groq LLM for rapid inference, streamlining resume and job description analysis using AI-powered insights.', stack:['React','Node.js','Groq API','Vercel'], link:'https://analyzer.vasutech.online/'}
+  docsign: {name:'DocSign', tag:'AI-Powered Digital Document Signature Platform', desc:'A cloud-based platform enabling users to upload, digitally sign, share, and manage PDF documents securely — replacing inefficient paper-based workflows. Full stack built with JWT authentication, AI-powered document summarization, public signing links, audit logging, and automated email notifications via Nodemailer. Deployed as a scalable multi-cloud app: frontend on Vercel, backend on AWS Elastic Beanstalk, with Cloudflare integration for secure, production-ready delivery.', stack:['React.js','TypeScript','Node.js','Express.js','PostgreSQL','Supabase','Prisma','AWS Elastic Beanstalk','Vercel','Cloudflare'], link:'https://docsign.vasutech.online/', img:'projects/docsign.png'},
+  civilianshield: {name:'CivilianShield', tag:'AI-Powered Civilian Safety Platform', desc:'A production-ready, full-stack civilian safety platform with 5+ REST API endpoints serving real users. Includes an SOS alert system, incident mapping, and emergency contact module — iterated across 3 major versions to reach the final stable release. Integrates an AI-based threat detection pipeline to automate emergency alert handling and improve response efficiency.', stack:['Spring Boot','REST API','H2','WebSocket','React'], link:'https://github.com/pvasu9055-hash/CivilianShield', img:'projects/civilianshield.png'},
+  skillgap: {name:'Skill Gap Analyzer', tag:'AI Career Intelligence Tool', desc:'An AI-powered career intelligence platform that analyzes resumes against job descriptions and generates prioritized skill-gap reports in under 3 seconds. Leverages Groq LLM for rapid inference, streamlining resume and job description analysis using AI-powered insights.', stack:['React','Node.js','Groq API','Vercel'], link:'https://analyzer.vasutech.online/', img:'projects/skillgap.png'},
+  aicode: {name:'AI Code Review Assistant', tag:'AI-Powered Code Review Tool', desc:'An AI-powered code review assistant that analyzes pull requests and repositories, automatically flagging bugs, security issues, and style violations with actionable, inline suggestions — reducing manual code review time and catching issues before they reach production.', stack:['React.js','Node.js','AI API','GitHub API'], link:'https://aicode.vasutech.online/login', img:'projects/aicode.png'}
 };
 function openModal(key){
   const p = projectData[key];
   if(!p) return;
   const idx = (projKeys.indexOf(key)+1).toString().padStart(2,'0');
   document.getElementById('pmodalBody').innerHTML = `
+    ${p.img ? `<div style="width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;border:1px solid var(--border-hi);margin-bottom:24px"><img src="${p.img}" alt="${p.name} screenshot" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block" onerror="this.closest('div').style.display='none'"></div>` : ''}
     <div class="pmodal-num">${idx}</div>
     <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2.5px;color:var(--lime);text-transform:uppercase;margin-bottom:10px;font-weight:600">${p.tag}</div>
     <div style="font-family:'Bebas Neue',cursive;font-size:40px;letter-spacing:1px;margin-bottom:20px;color:var(--text)">${p.name}</div>
@@ -918,7 +925,7 @@ function openModal(key){
 function closeModal(){ document.getElementById('pmodal').classList.remove('show'); }
 document.getElementById('pmodal').addEventListener('click', e=>{ if(e.target.id==='pmodal') closeModal(); });
 
-const projKeys = ['docsign','civilianshield','skillgap'];
+const projKeys = ['docsign','civilianshield','skillgap','aicode'];
 document.querySelectorAll('.proj-card').forEach((card,i)=>{
   card.addEventListener('click', ()=> openModal(projKeys[i]));
 });
@@ -1100,7 +1107,7 @@ const termCmds = {
   help: ()=> 'Commands: whoami, skills, projects, contact, education, sudo hire, clear, exit',
   whoami: ()=> 'Penkey Sri Vasu — Software Engineer, born 2005-10-20, native of Kakinada, AP. Currently in Vadodara, Gujarat.',
   skills: ()=> 'Java, Python, JS, SQL, Spring Boot, React.js, Node.js, Express.js, PostgreSQL, MongoDB, AWS, GCP, Docker, CI/CD',
-  projects: ()=> '1) DocSign  2) CivilianShield  3) Skill Gap Analyzer — scroll to #projects for details',
+  projects: ()=> '1) DocSign  2) CivilianShield  3) Skill Gap Analyzer  4) AI Code Review Assistant — scroll to #projects for details',
   education: ()=> 'B.Tech CSE @ Parul University, Vadodara (2023–2027), CGPA 7.25/10',
   contact: ()=> 'pvasu9055@gmail.com · +91 90147 35556 · github.com/pvasu9055-hash',
   clear: ()=>{ termBody.innerHTML=''; return null; },
@@ -1129,7 +1136,7 @@ document.addEventListener('keydown', e=>{
   const script = [
     {cmd:'whoami', out:'Penkey Sri Vasu — Software Engineer\nBorn 2005-10-20 · Native of Kakinada, AP\nCurrently in Vadodara, Gujarat'},
     {cmd:'skills', out:'Java · Python · JavaScript · SQL\nSpring Boot · React.js · Node.js · Express.js\nPostgreSQL · MongoDB · AWS · GCP · Docker'},
-    {cmd:'projects --list', out:'01. DocSign — AI document signature platform\n02. CivilianShield — civilian safety platform\n03. Skill Gap Analyzer — AI career tool'},
+    {cmd:'projects --list', out:'01. DocSign — AI document signature platform\n02. CivilianShield — civilian safety platform\n03. Skill Gap Analyzer — AI career tool\n04. AI Code Review Assistant — AI code review tool'},
     {cmd:'education', out:'B.Tech CSE @ Parul University\n2023 – 2027 · CGPA 7.25/10'},
     {cmd:'status', out:'✓ Open to opportunities\n✓ 100+ open source commits\n✓ 4+ apps shipped to production'}
   ];
@@ -1175,6 +1182,9 @@ const liCodeLines = [
   '}'
 ];
 function playLaptopIntro(url, label){
+  // Open the link immediately — animation is now purely decorative and never blocks the page.
+  window.open(url, '_blank');
+
   const overlay = document.getElementById('laptopIntro');
   const codeEl = document.getElementById('liCode');
   const welcomeEl = document.getElementById('liWelcome');
@@ -1191,7 +1201,7 @@ function playLaptopIntro(url, label){
 
   let li = 0;
   const typeNext = ()=>{
-    if(li >= liCodeLines.length){ setTimeout(typeWelcome, 400); return; }
+    if(li >= liCodeLines.length){ setTimeout(typeWelcome, 200); return; }
     const div = document.createElement('div');
     codeEl.appendChild(div);
     let ci = 0;
@@ -1204,32 +1214,33 @@ function playLaptopIntro(url, label){
         clearInterval(iv);
         div.innerHTML = full;
         li++;
-        setTimeout(typeNext, 90);
+        setTimeout(typeNext, 35);
       }
-    }, 14);
+    }, 6);
   };
 
   function typeWelcome(){
     codeEl.style.display = 'none';
     welcomeEl.classList.add('show');
     photoEl.classList.add('show');
-    setTimeout(()=> msgEl.classList.add('show'), 250);
-    const msg = 'Heyy There!! Welcome Love....';
+    setTimeout(()=> msgEl.classList.add('show'), 150);
+    const msg = 'Welcome — glad you\'re here.';
     let wi = 0;
     const wiv = setInterval(()=>{
       wi++;
       msgEl.textContent = msg.slice(0,wi);
       if(wi>=msg.length) clearInterval(wiv);
-    }, 45);
+    }, 20);
   }
 
-  setTimeout(typeNext, 950);
+  setTimeout(typeNext, 400);
 
+  // Auto-dismiss quickly — this overlay never captures clicks/scroll (pointer-events:none),
+  // so even if the user keeps scrolling while it plays, it can't block or hide page content.
   setTimeout(()=>{
-    window.open(url, '_blank');
     overlay.classList.remove('opening');
     setTimeout(()=> overlay.classList.remove('show'), 400);
-  }, 6400);
+  }, 2200);
 }
 document.addEventListener('click', e=>{
   const link = e.target.closest('.plnk, #pmodalBody a[target="_blank"]');
